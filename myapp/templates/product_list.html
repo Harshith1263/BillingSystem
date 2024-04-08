@@ -1,0 +1,108 @@
+{% extends "base.html" %} 
+{% block title %}Products{% endblock %} 
+{% block content %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(219, 246, 200);
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    li:hover {
+      background-color: #f0f0f0;
+    }
+    li a {
+      color: #007bff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    li a:hover {
+      text-decoration: underline;
+    }
+    .add-product {
+        display: block;
+        text-align: center;
+        width: 30%;
+        background-color: #45a049;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    a[type="home"] {
+        width: 30%;
+        background-color: #396fee;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    a[type="home"]:hover {
+        background-color: #1846b0;
+    }
+    a[type="delete"] {
+        width: 30%;
+        background-color:  #ed2f2f;
+        color: white;
+        padding: 6px 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    a[type="delete"]:hover {
+        background-color: #eb2626;
+    }
+    a[type="update"] {
+        width: 30%;
+        background-color:  #4CAF50;
+        color: white;
+        padding: 6px 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    a[type="update"]:hover {
+        background-color: #45a049;
+    }
+  </style>
+  <h1>Product List</h1>
+  <ul>
+    {% for product in products %}
+      <li>{{ product.name }} - {{ product.price }}
+        <a type="update" href="{% url 'update_product' product.id %}">Update</a>  
+        <a type="delete" href="{% url 'delete_product' product.id %}">Delete</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <p align="center">
+    <a class="add-product" href="{% url 'add_product' %}">Add Product</a>
+  </p>
+  
+  <p align="center">
+    <a type="home" href="/home">Home</a>
+</p>
+{% endblock %}
