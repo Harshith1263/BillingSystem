@@ -12,7 +12,7 @@ schema_view  = get_schema_view(
         description = 'This is the API for the Billing System'
     ),
     public = True,
-    pemission_classes=  (permissions.AllowAny,),
+    permission_classes=  (permissions.AllowAny,),
 )
 
 urlpatterns = [
